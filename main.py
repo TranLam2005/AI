@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-BEGIN = []
+START = []
 END = [
     [1, 2, 3],
     [4, 5, 6],
@@ -22,9 +22,9 @@ class Node:
 
 
 def input_matrix():
-    print("Nhập ma trận đầu:")
+    print("Trạng thái ban đầu:")
     for _ in range(3):
-        BEGIN.append([int(x) for x in input().split()])
+        START.append([int(x) for x in input().split()])
 
 
 def print_matrix(matrix):
@@ -126,7 +126,7 @@ def print_example_matrix():
         [4, 5, 6],
         [7, 8, 0]
     ]
-    print("Ma trận đích:")
+    print("Trạng thái đích:")
     for row in example_matrix:
         print(" ".join(map(str, row)))
 
@@ -137,19 +137,19 @@ if __name__ == "__main__":
     while True:
         try:
             input_matrix()
-            if len(BEGIN) == 3 and len(END) == 3:
+            if len(START) == 3 and len(END) == 3:
                 break
             else:
                 print("Nhập không đúng vui lòng nhập lại.")
         except ValueError:
             print("Nhập không đúng vui lòng nhập lại.")
 
-    if is_solvable(BEGIN, END):
-        print("Ma trận khởi tạo có thể trở thành ma trận đích!")
+    if is_solvable(START, END):
+        print("Trạng thái khởi tạo có thể trở thành trạng thái đích!")
     else:
-        print("Ma trận khởi tạo không thể trở thành ma trận đích!")
+        print("Trạng thái khởi tạo không thể trở thành trạng thái đích!")
         exit()
-    path = main(BEGIN)
+    path = main(START)
     print("Tổng số bước di chuyển: ", len(path) - 1)
     print("INPUT:")
     for step in path:
